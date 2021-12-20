@@ -13,8 +13,8 @@ import (
 
 func main() {
 
-	if os.Getenv(utils.ApiKey) == "" || os.Getenv(utils.PrivateApiKey) == ""  {
-		log.Fatalf("Must set the environment variables %v and %v", utils.ApiKey, utils.PrivateApiKey)
+	if os.Getenv(utils.ApiKey) == "" || os.Getenv(utils.PrivateApiKey) == "" || os.Getenv(utils.BaseUrl) == ""{
+		log.Fatalf("Must set the environment variables %v, %v and %v", utils.ApiKey, utils.PrivateApiKey, utils.BaseUrl)
 	}
 
 	handlerCharacter := handlers.NewCharacterHandler()
