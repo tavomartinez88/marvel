@@ -27,5 +27,6 @@ For dedault this app run on port 8080 locally
 - The Marvel Api Official has a limit request by 300 request per day
 
 ### Example
-- https://<host>/marvel/collaborators/iron man
-- https://<host>/marvel/characters/iron man
+
+- /<host>/marvel/collaborators/iron man
+- /<host>/marvel/characters/iron man
