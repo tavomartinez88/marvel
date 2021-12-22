@@ -12,7 +12,6 @@ This api retrieve collaborators from hero name, and too you can retrieve heroes 
 
 ### Build
 - Set the environment variables in assemble.sh 
-  - MARVEL_BASE_URL
   - MARVEL_PUBLIC_KEY
   - MARVEL_PRIVATE_KEY
 - execute this command: source ./assemble.sh
@@ -28,5 +27,5 @@ For dedault this app run on port 8080 locally
 
 ### Example
 
-- /<host>/marvel/collaborators/iron man
-- /<host>/marvel/characters/iron man
+- <host>/marvel/collaborators/iron man
+- <host>/marvel/characters/iron man
