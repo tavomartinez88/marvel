@@ -4,6 +4,7 @@ import (
 	"github.com/tavomartinez88/marvel/internal/dao"
 	error2 "github.com/tavomartinez88/marvel/internal/error"
 	"github.com/tavomartinez88/marvel/internal/utils"
+	"github.com/tavomartinez88/marvel/internal/utils/helper"
 	"github.com/tavomartinez88/marvel/pkg/models"
 	"net/http"
 	"os"
@@ -56,7 +57,7 @@ func (cs *CharacterService) GetCharacters(name string) (models.CharacterResponse
 	if time.Now().Sub(t).Hours() > lastSync{ //hay mas de x de la ultima actualizacion hay que sincronizar la bd
 		return cs.GetCharactersFromMarvelAndSaveOnDb(name)
 	}
-	return buildCharacters(result), nil
+	return helper.BuildCharacters(result), nil
 }
 
 func (cs *CharacterService) GetCharactersFromMarvelAndSaveOnDb(name string) (models.CharacterResponse, error) {
@@ -88,11 +89,4 @@ func (cs *CharacterService) GetCharactersFromMarvelAndSaveOnDb(name string) (mod
 	}
 
 	return response, nil
-}
-
-func buildCharacters(result dao.CharacterDao) models.CharacterResponse {
-	return models.CharacterResponse{
-		LastSync:   result.LastSync,
-		Characters: result.Characters,
-	}
 }

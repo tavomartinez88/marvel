@@ -11,16 +11,16 @@ type ICollaboratorHandler interface {
 	GetCollaborators(name string) (models.CollaboratorsResponse, error)
 }
 
-type collaboratorHandler struct {
+type CollaboratorHandler struct {
 	Service services.ICollaboratorService
 }
 
-func (cs *collaboratorHandler) GetCollaborators(name string) (models.CollaboratorsResponse, error) {
+func (cs *CollaboratorHandler) GetCollaborators(name string) (models.CollaboratorsResponse, error) {
 	return cs.Service.GetCollaborators(name)
 }
 
-func NewCollaboratorHandler() *collaboratorHandler {
-	return &collaboratorHandler{
+func NewCollaboratorHandler() *CollaboratorHandler {
+	return &CollaboratorHandler{
 		Service: &services.CollaboratorService{
 			Client: &utils.MarvelClientImpl{},
 			Dao: &dao.MarvelDaoImpl{},

@@ -22,6 +22,10 @@ sh ./avengers.sh
 
 For dedault this app run on port 8080 locally
 
-###Important notes
+### Important notes
 - The filter name is on english and support white space.
 - The Marvel Api Official has a limit request by 300 request per day
+
+### Example
+- https://<host>/marvel/collaborators/iron man
+- https://<host>/marvel/characters/iron man

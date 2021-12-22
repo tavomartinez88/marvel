@@ -8,19 +8,19 @@ import (
 )
 
 type ICharacterHandler interface {
-	GetCharacters(name string) (*models.CharacterResponse, error)
+	GetCharacters(name string) (models.CharacterResponse, error)
 }
 
-type characterHandler struct {
+type CharacterHandler struct {
 	Service services.ICharacterService
 }
 
-func (cs *characterHandler) GetCharacters(name string) (models.CharacterResponse, error) {
+func (cs *CharacterHandler) GetCharacters(name string) (models.CharacterResponse, error) {
 	return cs.Service.GetCharacters(name)
 }
 
-func NewCharacterHandler() *characterHandler {
-	return &characterHandler{
+func NewCharacterHandler() *CharacterHandler {
+	return &CharacterHandler{
 		Service: &services.CharacterService{
 			Client: &utils.MarvelClientImpl{},
 			Dao: &dao.MarvelDaoImpl{},

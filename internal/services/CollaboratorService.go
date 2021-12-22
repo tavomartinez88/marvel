@@ -4,6 +4,7 @@ import (
 	"github.com/tavomartinez88/marvel/internal/dao"
 	error2 "github.com/tavomartinez88/marvel/internal/error"
 	"github.com/tavomartinez88/marvel/internal/utils"
+	"github.com/tavomartinez88/marvel/internal/utils/helper"
 	"github.com/tavomartinez88/marvel/pkg/models"
 	"net/http"
 	"os"
@@ -62,7 +63,7 @@ func (cs *CollaboratorService) GetCollaborators(name string) (models.Collaborato
 	if time.Now().Sub(t).Hours() > lastSync{
 		return cs.GetCollaboratorsFromMarvelAndSaveOnDb(name)
 	}
-	return buildCollaborator(result), nil
+	return helper.BuildCollaborator(result), nil
 }
 
 func (cs *CollaboratorService) GetCollaboratorsFromMarvelAndSaveOnDb(name string) (models.CollaboratorsResponse, error) {
@@ -96,15 +97,6 @@ func (cs *CollaboratorService) GetCollaboratorsFromMarvelAndSaveOnDb(name string
 	}
 
 	return response, nil
-}
-
-func buildCollaborator(result dao.CollaboratorsDao) models.CollaboratorsResponse {
-	var response models.CollaboratorsResponse
-	response.LastSync = result.LastSync
-	response.Colorists = result.Colorists
-	response.Editors = result.Editors
-	response.Writers = result.Writers
-	return response
 }
 
 func filterCollaboratorsByRole(collaborators []utils.Collaborator) ([]string, []string, []string) {
